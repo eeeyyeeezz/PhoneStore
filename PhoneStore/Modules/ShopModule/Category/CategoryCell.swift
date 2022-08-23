@@ -11,10 +11,10 @@ class CategoryCell: UICollectionViewCell {
 
 	static let identifier = "CategoryCell"
 
-  private lazy var view: UIView = {
+  lazy var view: UIView = {
 		let view = UIView()
-    view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    view.layer.cornerRadius = frame.height / 2
+    view.backgroundColor = .white
+    view.layer.cornerRadius = (frame.height - frame.height / 3.5 ) / 2
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
@@ -23,6 +23,14 @@ class CategoryCell: UICollectionViewCell {
 		let image = UIImageView()
     image.translatesAutoresizingMaskIntoConstraints = false
     return image
+  }()
+
+  var labelCell: UILabel = {
+		let label = UILabel()
+    label.font = UIFont(name: "HelveticaNeue-Bold", size: 12)
+    label.textAlignment = .center
+    label.translatesAutoresizingMaskIntoConstraints = false
+    return label
   }()
 
   override init(frame: CGRect) {
@@ -38,6 +46,7 @@ class CategoryCell: UICollectionViewCell {
 
   private func addSubviews() {
     addSubview(view)
+    addSubview(labelCell)
     view.addSubview(imageCell)
   }
 
@@ -45,8 +54,14 @@ class CategoryCell: UICollectionViewCell {
     NSLayoutConstraint.activate([
       view.centerXAnchor.constraint(equalTo: centerXAnchor),
       view.centerYAnchor.constraint(equalTo: centerYAnchor),
-      view.widthAnchor.constraint(equalToConstant: frame.height),
-      view.heightAnchor.constraint(equalToConstant: frame.height),
+      view.widthAnchor.constraint(equalToConstant: frame.height - (frame.height / 3.5)),
+      view.heightAnchor.constraint(equalToConstant: frame.height - (frame.height / 3.5)),
+    ])
+
+    NSLayoutConstraint.activate([
+      labelCell.leadingAnchor.constraint(equalTo: leadingAnchor),
+      labelCell.trailingAnchor.constraint(equalTo: trailingAnchor),
+      labelCell.bottomAnchor.constraint(equalTo: bottomAnchor)
     ])
 
     NSLayoutConstraint.activate([

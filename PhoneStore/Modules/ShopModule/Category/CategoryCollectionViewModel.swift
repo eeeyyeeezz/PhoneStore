@@ -25,4 +25,19 @@ struct CategoryCollectionViewModel {
     }
   }
 
+  func setupTextCellLabel(_ indexPath: IndexPath) -> String {
+    switch indexPath.row {
+    case 0:
+      return "Phones"
+    case 1:
+      return "Health"
+    case 2:
+      return "Computer"
+    case 3:
+      return "Books"
+    default:
+      return "Default"
+    }
+  }
+
 }

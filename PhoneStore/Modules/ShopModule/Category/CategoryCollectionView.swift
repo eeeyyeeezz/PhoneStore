@@ -38,11 +38,23 @@ extension CategoryCollectionView: UICollectionViewDelegate, UICollectionViewData
     let cell = dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as! CategoryCell
     cell.imageCell.tintColor = #colorLiteral(red: 0.7058823529, green: 0.7058823529, blue: 0.768627451, alpha: 1)
     cell.imageCell.image = viewModel.getCellImage(indexPath)
+    cell.labelCell.text = viewModel.setupTextCellLabel(indexPath)
     return cell
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    CGSize(width: 110, height: 90)
+    CGSize(width: 110, height: 130)
+  }
+
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let cell = collectionView.cellForItem(at: indexPath) as! CategoryCell
+    if cell.isSelected {
+      if cell.view.backgroundColor == .white {
+      	cell.view.backgroundColor = .orange
+      } else {
+        cell.view.backgroundColor = .white
+      }
+    }
   }
 
 
