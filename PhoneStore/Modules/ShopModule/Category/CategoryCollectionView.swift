@@ -1,0 +1,49 @@
+// 
+// PhoneStore
+// CategoryCollectionView.swift
+// Created by eeeyyeeezz on 23.08.2022
+// Swift: 5.0
+//
+
+import UIKit
+
+
+class CategoryCollectionView: UICollectionView {
+
+  let viewModel: CategoryCollectionViewModel
+
+  init() {
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .horizontal
+    viewModel = CategoryCollectionViewModel()
+    super.init(frame: .zero, collectionViewLayout: layout)
+    delegate = self
+    dataSource = self
+    backgroundColor = nil
+    backgroundColor = nil
+    register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.identifier)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+}
+
+extension CategoryCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { 4 }
+
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as! CategoryCell
+    cell.imageCell.tintColor = #colorLiteral(red: 0.7058823529, green: 0.7058823529, blue: 0.768627451, alpha: 1)
+    cell.imageCell.image = viewModel.getCellImage(indexPath)
+    return cell
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    CGSize(width: 110, height: 90)
+  }
+
+
+}

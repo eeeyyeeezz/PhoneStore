@@ -1,0 +1,31 @@
+// 
+// PhoneStore
+// SceneDelegate.swift
+// Created by eeeyyeeezz on 23.08.2022
+// Swift: 5.0
+//
+
+
+import UIKit
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+  var window: UIWindow?
+
+
+  func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+
+    if let windowScene = scene as? UIWindowScene {
+        let window = UIWindow(windowScene: windowScene)
+        window.rootViewController = MainTabBarViewController()
+        self.window = window
+        window.makeKeyAndVisible()
+    }
+
+
+  }
+
+
+
+}
+
