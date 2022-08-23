@@ -5,23 +5,25 @@
 // Swift: 5.0
 //
 
-
 import UIKit
 
 class MainTabBarViewController: UITabBarController {
 
-  private let shopViewController: ShopViewController = {
-    let shop = ShopViewController()
-    shop.tabBarItem = UITabBarItem(title: "",
-                                   		image: UIImage(named: "Shop")?.withRenderingMode(.alwaysOriginal),
-                                      selectedImage: UIImage(named: "Shop")?.withRenderingMode(.alwaysOriginal))
-    return shop
-  }()
+  weak var coordinator: MainCoordinator?
 
   override func loadView() {
     super.loadView()
     setTabBar()
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    setupStyle()
     setViewControllers()
+  }
+
+  private func setupStyle() {
+    navigationController?.isNavigationBarHidden = true
   }
 
   private func setTabBar() {
@@ -31,9 +33,11 @@ class MainTabBarViewController: UITabBarController {
   }
 
   private func setViewControllers() {
-		let navController = UINavigationController(rootViewController: shopViewController)
-
-    viewControllers = [navController]
+    guard let coordinator = coordinator else {
+      return
+    }
+    let shopViewController = UINavigationController(rootViewController: coordinator.getShopViewController())
+    viewControllers = [shopViewController]
   }
 
 }

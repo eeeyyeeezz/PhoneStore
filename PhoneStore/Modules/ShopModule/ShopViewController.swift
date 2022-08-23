@@ -9,7 +9,7 @@ import UIKit
 
 class ShopViewController: UIViewController {
 
-//  private let coordinator: AppCoordinator
+  weak var coordinator: MainCoordinator?
 
   private let categoryLabel: UILabel = {
 		let label = UILabel()
@@ -21,16 +21,22 @@ class ShopViewController: UIViewController {
 
   private let viewAllButton: UIButton = {
     let button = UIButton(type: .system)
-    button.setTitle("View all", for: .normal)
+    button.setTitle("view all", for: .normal)
     button.tintColor = #colorLiteral(red: 1, green: 0.431372549, blue: 0.3058823529, alpha: 1)
     button.translatesAutoresizingMaskIntoConstraints = false
     return button
   }()
 
-  let collectionView: CategoryCollectionView = {
+  private let collectionView: CategoryCollectionView = {
     let collectionView = CategoryCollectionView()
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     return collectionView
+  }()
+
+  private let searchBar: SearchBar = {
+    let search = SearchBar()
+    search.translatesAutoresizingMaskIntoConstraints = false
+    return search
   }()
 
   override func loadView() {
@@ -38,10 +44,10 @@ class ShopViewController: UIViewController {
     setupStyle()
     addSubviews()
     setupConstraints()
-    view.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9647058824, alpha: 1)
   }
 
   private func setupStyle() {
+    view.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9647058824, alpha: 1)
     title = "Moscow, Ru"
     let filter = UIBarButtonItem(image: UIImage(named: "Filter")?.withRenderingMode(.alwaysOriginal),
                                  style: .done,
@@ -53,24 +59,30 @@ class ShopViewController: UIViewController {
 
   @objc
   private func filterTapped() {
-
+    guard let coordinator = coordinator else {
+      return
+    }
+    let filter = UINavigationController(rootViewController: coordinator.getFilterViewController())
+    filter.modalPresentationStyle = .pageSheet
+    present(filter, animated: true)
   }
 
   private func addSubviews() {
     view.addSubview(viewAllButton)
     view.addSubview(categoryLabel)
     view.addSubview(collectionView)
+    view.addSubview(searchBar)
   }
 
   private func setupConstraints() {
     NSLayoutConstraint.activate([
-      viewAllButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 25),
+      viewAllButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       viewAllButton.widthAnchor.constraint(equalToConstant: 80),
       viewAllButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12)
     ])
 
     NSLayoutConstraint.activate([
-      categoryLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 25),
+      categoryLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       categoryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 17),
       categoryLabel.trailingAnchor.constraint(equalTo: viewAllButton.leadingAnchor),
       categoryLabel.heightAnchor.constraint(equalToConstant: 40)
@@ -81,6 +93,13 @@ class ShopViewController: UIViewController {
       collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       collectionView.heightAnchor.constraint(equalToConstant: 130)
+    ])
+
+    NSLayoutConstraint.activate([
+      searchBar.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 35),
+      searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+      searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+      searchBar.heightAnchor.constraint(equalToConstant: 34)
     ])
   }
 
