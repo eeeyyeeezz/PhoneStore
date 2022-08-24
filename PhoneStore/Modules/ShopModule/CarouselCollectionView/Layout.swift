@@ -23,7 +23,7 @@ extension CarouselCollectionView {
                                                             heightDimension: .fractionalHeight(1)))
         item.contentInsets.trailing = 5
       	let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                                                       heightDimension: .fractionalHeight(0.35)),
+                                                                       heightDimension: .fractionalHeight(0.4)),
             																						subitems: [item])
         group.contentInsets.leading = 10
         let section = NSCollectionLayoutSection(group: group)

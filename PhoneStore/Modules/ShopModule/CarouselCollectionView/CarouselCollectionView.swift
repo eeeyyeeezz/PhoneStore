@@ -27,7 +27,7 @@ class CarouselCollectionView: UICollectionView {
         super.init(frame: frame, collectionViewLayout: CarouselCollectionView.configureLayout())
         delegate = self
         dataSource = self
-      	backgroundColor = .brown
+      	backgroundColor = nil
         register(HotSellCell.self, forCellWithReuseIdentifier: HotSellCell.identifier)
         register(PhoneCell.self, forCellWithReuseIdentifier: PhoneCell.identifier)
     }
