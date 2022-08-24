@@ -92,19 +92,18 @@ class ShopViewController: UIViewController {
         NSLayoutConstraint.activate([
             categoryLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             categoryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 17),
-            categoryLabel.trailingAnchor.constraint(equalTo: viewAllButton.leadingAnchor),
-            categoryLabel.heightAnchor.constraint(equalToConstant: 40),
+            categoryLabel.trailingAnchor.constraint(equalTo: viewAllButton.leadingAnchor)
         ])
 
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 17),
+            collectionView.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 130),
+            collectionView.heightAnchor.constraint(equalToConstant: view.bounds.height / 7),
         ])
 
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 35),
+            searchBar.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 15),
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             searchBar.heightAnchor.constraint(equalToConstant: 34),

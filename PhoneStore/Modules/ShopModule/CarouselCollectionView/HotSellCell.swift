@@ -8,7 +8,7 @@
 import UIKit
 
 class HotSellCell: UICollectionViewCell {
-    static let identifier: String = "HotSellCell"
+  static let identifier: String = "HotSellCell"
 
   private let iphoneImage: UIImageView = {
 		let image = UIImageView(image: UIImage(named: "IphoneBackground"))

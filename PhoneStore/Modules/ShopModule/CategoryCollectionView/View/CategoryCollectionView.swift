@@ -40,7 +40,7 @@ extension CategoryCollectionView: UICollectionViewDelegate, UICollectionViewData
     }
 
     func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt _: IndexPath) -> CGSize {
-        CGSize(width: 110, height: 130)
+      CGSize(width: 110, height: bounds.height)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
