@@ -26,6 +26,7 @@ extension CarouselCollectionView {
                                                                        heightDimension: .fractionalHeight(0.4)),
             																						subitems: [item])
         group.contentInsets.leading = 10
+      	group.contentInsets.trailing = 10
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .paging
         return section
@@ -33,10 +34,10 @@ extension CarouselCollectionView {
 
     private static func createBasicLayout(sectionNumber _: Int) -> NSCollectionLayoutSection? {
      		let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.45),
-                                                           heightDimension: .fractionalHeight(0.5)))
-      	item.contentInsets.trailing = 32
+                                                           heightDimension: .fractionalHeight(1)))
+      	item.contentInsets.trailing = 8
       	let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                                                       heightDimension: .fractionalHeight(1)),
+                                                                         heightDimension: .fractionalHeight(0.45)),
                                                      subitem: item, count: 2)
       	group.contentInsets.top = 16
       	group.contentInsets.leading = 8

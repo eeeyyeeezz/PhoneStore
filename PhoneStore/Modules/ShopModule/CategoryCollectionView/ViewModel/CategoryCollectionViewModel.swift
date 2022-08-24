@@ -38,14 +38,26 @@ struct CategoryCollectionViewModel {
         }
     }
 
-    func checkSelectedCells(_ collectionView: UICollectionView, _ indexPath: IndexPath) -> Bool {
+    private func checkSelectedCells(_ collectionView: UICollectionView, _ indexPath: IndexPath) {
         for i in 0 ... 3 {
             let customIndexPath = IndexPath(item: i, section: 0)
             let cell = collectionView.cellForItem(at: customIndexPath) as! CategoryCell
             if cell.view.backgroundColor == .orange, indexPath != customIndexPath {
-                return true
+              cell.view.backgroundColor = .white
             }
         }
-        return false
     }
+
+  func setupCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) {
+    checkSelectedCells(collectionView, indexPath)
+
+    let cell = collectionView.cellForItem(at: indexPath) as! CategoryCell
+    if cell.isSelected {
+        if cell.view.backgroundColor == .white {
+            cell.view.backgroundColor = .orange
+        } else {
+            cell.view.backgroundColor = .white
+        }
+    }
+  }
 }

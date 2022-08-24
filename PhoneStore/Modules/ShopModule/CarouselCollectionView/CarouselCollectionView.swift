@@ -12,7 +12,7 @@ class PhoneCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .green
+      	backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         layer.cornerRadius = 25
     }
 

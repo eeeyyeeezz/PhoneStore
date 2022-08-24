@@ -44,15 +44,6 @@ extension CategoryCollectionView: UICollectionViewDelegate, UICollectionViewData
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if viewModel.checkSelectedCells(collectionView, indexPath) { return }
-
-        let cell = collectionView.cellForItem(at: indexPath) as! CategoryCell
-        if cell.isSelected {
-            if cell.view.backgroundColor == .white {
-                cell.view.backgroundColor = .orange
-            } else {
-                cell.view.backgroundColor = .white
-            }
-        }
+      viewModel.setupCell(collectionView, indexPath)
     }
 }
