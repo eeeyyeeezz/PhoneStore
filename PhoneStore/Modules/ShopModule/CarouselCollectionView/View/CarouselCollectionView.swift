@@ -74,12 +74,12 @@ extension CarouselCollectionView: UICollectionViewDataSource,
     func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 { // HotSales
           guard let homeStore = homeStore else {
-            return 0
+            return 1
           }
           return homeStore.count
         } else {
           guard let bestSeller = bestSeller else {
-            return 0
+            return 1
           }
           return bestSeller.count
         }
@@ -87,12 +87,15 @@ extension CarouselCollectionView: UICollectionViewDataSource,
 
     func collectionView(_: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 { // HotSales
-            let cell = dequeueReusableCell(withReuseIdentifier: HotSellCell.identifier, for: indexPath) as! HotSellCell
-          	cell.homeStore = homeStore
-          	cell.cellId = indexPath.row
-            return cell
+          let cell = dequeueReusableCell(withReuseIdentifier: HotSellCell.identifier, for: indexPath) as! HotSellCell
+          cell.homeStore = homeStore
+          cell.cellId = indexPath.row
+          return cell
+        } else { // PhoneCell
+          let cell = dequeueReusableCell(withReuseIdentifier: PhoneCell.identifier, for: indexPath) as! PhoneCell
+          cell.bestSeller = bestSeller
+          cell.cellId = indexPath.row
+          return cell
         }
-        let cell = dequeueReusableCell(withReuseIdentifier: PhoneCell.identifier, for: indexPath) as! PhoneCell
-        return cell
     }
 }

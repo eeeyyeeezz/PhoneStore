@@ -58,7 +58,6 @@ class ShopViewController: UIViewController {
                                      style: .done,
                                      target: self,
                                      action: #selector(filterTapped))
-
         navigationItem.rightBarButtonItems = [filter]
     }
 

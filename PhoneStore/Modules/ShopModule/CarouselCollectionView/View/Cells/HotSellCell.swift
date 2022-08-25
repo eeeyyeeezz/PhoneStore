@@ -14,7 +14,15 @@ class HotSellCell: UICollectionViewCell {
 
   var cellId: Int?
 
-  private let iphoneImage: UIImageView = {
+  private lazy var progressView: UIActivityIndicatorView = {
+    let view = UIActivityIndicatorView(style: .large)
+    view.color = .white
+    view.center = center
+    view.stopAnimating()
+    return view
+  }()
+
+  private let phoneImage: UIImageView = {
 		let image = UIImageView()
     image.layer.cornerRadius = 15
     image.contentMode = .scaleAspectFit
@@ -22,10 +30,12 @@ class HotSellCell: UICollectionViewCell {
     return image
   }()
 
-  private let newView: UIView = {
+  private lazy var newView: UIView = {
 		let view = UIView()
     view.backgroundColor = .orange
-    view.layer.cornerRadius = 20
+    debugPrint("corner", (frame.height / 6) / 2, frame.height / 6)
+    view.layer.cornerRadius = ((frame.height / 6) / 2)
+    view.isHidden = true
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
@@ -34,7 +44,6 @@ class HotSellCell: UICollectionViewCell {
     let label = UILabel()
     label.text = "New"
     label.textColor = .white
-    label.font = label.font.withSize(15)
     label.adjustsFontSizeToFitWidth = true
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
@@ -62,7 +71,7 @@ class HotSellCell: UICollectionViewCell {
   private let parametrsLabel: UILabel = {
     let label = UILabel()
     label.textColor = .white
-    label.font = label.font.withSize(25)
+    label.font = label.font.withSize(15)
     label.adjustsFontSizeToFitWidth = true
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
@@ -94,6 +103,7 @@ class HotSellCell: UICollectionViewCell {
 
   private func setupCell() {
     guard let homeStore = homeStore, let cellId = cellId else {
+      progressView.startAnimating()
       return
     }
     newView.isHidden = homeStore[cellId].isNew == nil ? true : false
@@ -110,7 +120,7 @@ class HotSellCell: UICollectionViewCell {
       if let data = try? Data(contentsOf: url) {
         if let image = UIImage(data: data) {
           DispatchQueue.main.async {
-            self?.iphoneImage.image = image
+            self?.phoneImage.image = image
           }
         }
       }
@@ -119,7 +129,8 @@ class HotSellCell: UICollectionViewCell {
 
   private func addSubviews() {
     addSubviews([
-			iphoneImage,
+      progressView,
+      phoneImage,
       newView,
       phoneNameLabel,
       parametrsLabel,
@@ -139,17 +150,17 @@ class HotSellCell: UICollectionViewCell {
 
   private func setupConstraints() {
     NSLayoutConstraint.activate([
-      iphoneImage.topAnchor.constraint(equalTo: topAnchor),
-      iphoneImage.bottomAnchor.constraint(equalTo: bottomAnchor),
-      iphoneImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-      iphoneImage.trailingAnchor.constraint(equalTo: trailingAnchor)
+      phoneImage.topAnchor.constraint(equalTo: topAnchor),
+      phoneImage.bottomAnchor.constraint(equalTo: bottomAnchor),
+      phoneImage.leadingAnchor.constraint(equalTo: leadingAnchor),
+      phoneImage.trailingAnchor.constraint(equalTo: trailingAnchor)
     ])
 
     NSLayoutConstraint.activate([
       newView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
       newView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
-      newView.widthAnchor.constraint(equalToConstant: 40),
-      newView.heightAnchor.constraint(equalToConstant: 40)
+      newView.widthAnchor.constraint(equalToConstant: frame.height / 6),
+      newView.heightAnchor.constraint(equalToConstant: frame.height / 6)
     ])
 
     ///
@@ -163,8 +174,10 @@ class HotSellCell: UICollectionViewCell {
     ///
 
     NSLayoutConstraint.activate([
-      newLabel.centerXAnchor.constraint(equalTo: newView.centerXAnchor),
-      newLabel.centerYAnchor.constraint(equalTo: newView.centerYAnchor)
+      newLabel.topAnchor.constraint(equalTo: newView.topAnchor),
+      newLabel.leadingAnchor.constraint(equalTo: newView.leadingAnchor),
+      newLabel.trailingAnchor.constraint(equalTo: newView.trailingAnchor),
+      newLabel.bottomAnchor.constraint(equalTo: newView.bottomAnchor)
     ])
 
     NSLayoutConstraint.activate([
@@ -174,16 +187,16 @@ class HotSellCell: UICollectionViewCell {
 
     NSLayoutConstraint.activate([
       parametrsLabel.topAnchor.constraint(equalTo: phoneNameLabel.bottomAnchor, constant: 10),
-      parametrsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
-      parametrsLabel.bottomAnchor.constraint(equalTo: phoneNameLabel.bottomAnchor, constant: 30)
+      parametrsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25)
     ])
 
     NSLayoutConstraint.activate([
       buyButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
-      buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -34),
+      buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -(frame.height / 10)),
       buyButton.widthAnchor.constraint(equalToConstant: 98),
       buyButton.heightAnchor.constraint(equalToConstant: 23)
     ])
+
   }
 
     @available(*, unavailable)
