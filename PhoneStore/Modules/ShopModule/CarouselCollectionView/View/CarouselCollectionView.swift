@@ -7,32 +7,6 @@
 
 import UIKit
 
-class HeaderHotSales: UICollectionReusableView {
-  static let categoryId = "HeaderHotSalesCategoryId"
-  static let identifier = "HeaderHotSales"
-
-  private lazy var label: UILabel = {
-    let label = UILabel()
-    label.text = "Hot Sales"
-    label.frame = bounds
-    return label
-  }()
-
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-  }
-
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    addSubview(label)
-  }
-
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-
-}
-
 class CarouselCollectionView: UICollectionView {
     private var homeStore: [HomeStore]?
     private var bestSeller: [BestSeller]?
@@ -50,6 +24,9 @@ class CarouselCollectionView: UICollectionView {
         register(HeaderHotSales.self,
                forSupplementaryViewOfKind: HeaderHotSales.categoryId,
                withReuseIdentifier: HeaderHotSales.identifier)
+      	register(HeaderPhone.self,
+             forSupplementaryViewOfKind: HeaderPhone.categoryId,
+             withReuseIdentifier: HeaderPhone.identifier)
     }
 
     private func setupCellsNumber() {
@@ -72,6 +49,26 @@ extension CarouselCollectionView: UICollectionViewDataSource,
                                     UICollectionViewDelegate,
                                     UICollectionViewDelegateFlowLayout {
 
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+      switch indexPath.section {
+      case 0:
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                   withReuseIdentifier: HeaderHotSales.identifier,
+                                                                   for: indexPath)
+        return header
+      case 1:
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                   withReuseIdentifier: HeaderPhone.identifier,
+                                                                   for: indexPath)
+        return header
+      default:
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                   withReuseIdentifier: HeaderHotSales.identifier,
+                                                                   for: indexPath)
+        return header
+      }
+    }
+
     func numberOfSections(in _: UICollectionView) -> Int { 2 }
 
     func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -86,15 +83,6 @@ extension CarouselCollectionView: UICollectionViewDataSource,
           }
           return bestSeller.count
         }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-      let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                   withReuseIdentifier: HeaderHotSales.identifier,
-                                                                   for: indexPath) as! HeaderHotSales
-      debugPrint(indexPath)
-      header.backgroundColor = .green
-      return header
     }
 
     func collectionView(_: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

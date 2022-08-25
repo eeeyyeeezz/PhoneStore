@@ -16,6 +16,8 @@ class HotSellCell: UICollectionViewCell {
 
   private let iphoneImage: UIImageView = {
 		let image = UIImageView()
+    image.layer.cornerRadius = 15
+    image.contentMode = .scaleAspectFit
     image.translatesAutoresizingMaskIntoConstraints = false
     return image
   }()
@@ -41,7 +43,7 @@ class HotSellCell: UICollectionViewCell {
   private let phoneNameLabel: UILabel = {
 		let label = UILabel()
     label.textColor = .white
-    label.font = label.font.withSize(25)
+    label.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
     label.adjustsFontSizeToFitWidth = true
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
@@ -106,11 +108,11 @@ class HotSellCell: UICollectionViewCell {
     }
     DispatchQueue.global().async { [weak self] in
       if let data = try? Data(contentsOf: url) {
-          if let image = UIImage(data: data) {
-              DispatchQueue.main.async {
-                self?.iphoneImage.image = image
-              }
+        if let image = UIImage(data: data) {
+          DispatchQueue.main.async {
+            self?.iphoneImage.image = image
           }
+        }
       }
     }
   }

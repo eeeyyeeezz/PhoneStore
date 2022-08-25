@@ -11,32 +11,6 @@ import UIKit
 
 class PhoneCellViewModel {
 
-
-  init() {
-    parsData()
-  }
-
-  private func parsData() {
-
-  }
-
-  func getImage() -> UIImageView {
-    UIImageView()
-  }
-
-  func getPhoneName() -> String {
-    "Iphone"
-  }
-
-  func getPrice() -> String {
-    "1000$"
-  }
-
-  func getDiscountPrice() -> String {
-    "5000$"
-  }
-
-
 }
 
 class PhoneCell: UICollectionViewCell {

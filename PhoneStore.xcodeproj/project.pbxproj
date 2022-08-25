@@ -21,6 +21,8 @@
 		EA9BDC6228B633F100509410 /* HotSellCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BDC6128B633F100509410 /* HotSellCell.swift */; };
 		EA9BDC6528B653DF00509410 /* PhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BDC6428B653DF00509410 /* PhoneCell.swift */; };
 		EA9BDC6728B6562900509410 /* PhoneStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BDC6628B6562900509410 /* PhoneStruct.swift */; };
+		EAB062C228B782EC0071BE48 /* HeaderHotSales.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB062C128B782EC0071BE48 /* HeaderHotSales.swift */; };
+		EAB062C528B78C0B0071BE48 /* HeaderPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB062C428B78C0B0071BE48 /* HeaderPhone.swift */; };
 		EAED6E0328B4C59100966548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED6E0228B4C59100966548 /* AppDelegate.swift */; };
 		EAED6E0528B4C59100966548 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED6E0428B4C59100966548 /* SceneDelegate.swift */; };
 		EAED6E0728B4C59100966548 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED6E0628B4C59100966548 /* MainTabBarViewController.swift */; };
@@ -45,6 +47,8 @@
 		EA9BDC6128B633F100509410 /* HotSellCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotSellCell.swift; sourceTree = "<group>"; };
 		EA9BDC6428B653DF00509410 /* PhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCell.swift; sourceTree = "<group>"; };
 		EA9BDC6628B6562900509410 /* PhoneStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneStruct.swift; sourceTree = "<group>"; };
+		EAB062C128B782EC0071BE48 /* HeaderHotSales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderHotSales.swift; sourceTree = "<group>"; };
+		EAB062C428B78C0B0071BE48 /* HeaderPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderPhone.swift; sourceTree = "<group>"; };
 		EAED6DFF28B4C59100966548 /* PhoneStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAED6E0228B4C59100966548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAED6E0428B4C59100966548 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				EAF2D53328B775B10083CC14 /* View */,
-				EAF2D53128B775900083CC14 /* CarouselViewModel.swift */,
+				EAB062C328B784CC0071BE48 /* ViewModel */,
 			);
 			path = CarouselCollectionView;
 			sourceTree = "<group>";
@@ -152,9 +156,19 @@
 			isa = PBXGroup;
 			children = (
 				EA9BDC6128B633F100509410 /* HotSellCell.swift */,
+				EAB062C128B782EC0071BE48 /* HeaderHotSales.swift */,
+				EAB062C428B78C0B0071BE48 /* HeaderPhone.swift */,
 				EA9BDC6428B653DF00509410 /* PhoneCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		EAB062C328B784CC0071BE48 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EAF2D53128B775900083CC14 /* CarouselViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		EAED6DF628B4C59100966548 = {
@@ -316,7 +330,9 @@
 				EA9BDC6028B6316500509410 /* Extension.swift in Sources */,
 				EAED6E0328B4C59100966548 /* AppDelegate.swift in Sources */,
 				EAED6E0528B4C59100966548 /* SceneDelegate.swift in Sources */,
+				EAB062C228B782EC0071BE48 /* HeaderHotSales.swift in Sources */,
 				EA852C2228B50395009330CE /* MainCoordinator.swift in Sources */,
+				EAB062C528B78C0B0071BE48 /* HeaderPhone.swift in Sources */,
 				EA9BDC6728B6562900509410 /* PhoneStruct.swift in Sources */,
 				EAF2D53228B775900083CC14 /* CarouselViewModel.swift in Sources */,
 				EA9BDC6228B633F100509410 /* HotSellCell.swift in Sources */,
