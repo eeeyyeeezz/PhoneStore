@@ -19,12 +19,15 @@
 		EA852C2D28B51A8F009330CE /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA852C2C28B51A8F009330CE /* Layout.swift */; };
 		EA9BDC6028B6316500509410 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BDC5F28B6316500509410 /* Extension.swift */; };
 		EA9BDC6228B633F100509410 /* HotSellCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BDC6128B633F100509410 /* HotSellCell.swift */; };
+		EA9BDC6528B653DF00509410 /* PhoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BDC6428B653DF00509410 /* PhoneCell.swift */; };
+		EA9BDC6728B6562900509410 /* PhoneStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9BDC6628B6562900509410 /* PhoneStruct.swift */; };
 		EAED6E0328B4C59100966548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED6E0228B4C59100966548 /* AppDelegate.swift */; };
 		EAED6E0528B4C59100966548 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED6E0428B4C59100966548 /* SceneDelegate.swift */; };
 		EAED6E0728B4C59100966548 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED6E0628B4C59100966548 /* MainTabBarViewController.swift */; };
 		EAED6E0A28B4C59100966548 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAED6E0828B4C59100966548 /* Main.storyboard */; };
 		EAED6E0C28B4C59200966548 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAED6E0B28B4C59200966548 /* Assets.xcassets */; };
 		EAED6E0F28B4C59200966548 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAED6E0D28B4C59200966548 /* LaunchScreen.storyboard */; };
+		EAF2D53228B775900083CC14 /* CarouselViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF2D53128B775900083CC14 /* CarouselViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,8 @@
 		EA852C2C28B51A8F009330CE /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		EA9BDC5F28B6316500509410 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		EA9BDC6128B633F100509410 /* HotSellCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotSellCell.swift; sourceTree = "<group>"; };
+		EA9BDC6428B653DF00509410 /* PhoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCell.swift; sourceTree = "<group>"; };
+		EA9BDC6628B6562900509410 /* PhoneStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneStruct.swift; sourceTree = "<group>"; };
 		EAED6DFF28B4C59100966548 /* PhoneStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAED6E0228B4C59100966548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAED6E0428B4C59100966548 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,6 +53,7 @@
 		EAED6E0B28B4C59200966548 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAED6E0E28B4C59200966548 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAED6E1028B4C59200966548 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAF2D53128B775900083CC14 /* CarouselViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,7 @@
 			children = (
 				EA852C1F28B501C8009330CE /* Coordinator */,
 				EA9BDC5F28B6316500509410 /* Extension.swift */,
+				EA9BDC6628B6562900509410 /* PhoneStruct.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -109,9 +116,8 @@
 		EA852C2B28B5197A009330CE /* CarouselCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				EA852C2928B51977009330CE /* CarouselCollectionView.swift */,
-				EA9BDC6128B633F100509410 /* HotSellCell.swift */,
-				EA852C2C28B51A8F009330CE /* Layout.swift */,
+				EAF2D53328B775B10083CC14 /* View */,
+				EAF2D53128B775900083CC14 /* CarouselViewModel.swift */,
 			);
 			path = CarouselCollectionView;
 			sourceTree = "<group>";
@@ -140,6 +146,15 @@
 				EA82406C28B4D6B900CD6E86 /* CategoryCollectionViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EA9BDC6328B653D200509410 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EA9BDC6128B633F100509410 /* HotSellCell.swift */,
+				EA9BDC6428B653DF00509410 /* PhoneCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		EAED6DF628B4C59100966548 = {
@@ -205,6 +220,16 @@
 				EAED6E1028B4C59200966548 /* Info.plist */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		EAF2D53328B775B10083CC14 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EA852C2928B51977009330CE /* CarouselCollectionView.swift */,
+				EA852C2C28B51A8F009330CE /* Layout.swift */,
+				EA9BDC6328B653D200509410 /* Cells */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +307,7 @@
 				EA852C2828B50CE7009330CE /* SearchBar.swift in Sources */,
 				EA82406828B4CE9100CD6E86 /* CategoryCollectionView.swift in Sources */,
 				EA82406D28B4D6B900CD6E86 /* CategoryCollectionViewModel.swift in Sources */,
+				EA9BDC6528B653DF00509410 /* PhoneCell.swift in Sources */,
 				EA82406528B4CDCC00CD6E86 /* ShopViewController.swift in Sources */,
 				EA852C2D28B51A8F009330CE /* Layout.swift in Sources */,
 				EA852C2528B509C2009330CE /* FilterViewController.swift in Sources */,
@@ -291,6 +317,8 @@
 				EAED6E0328B4C59100966548 /* AppDelegate.swift in Sources */,
 				EAED6E0528B4C59100966548 /* SceneDelegate.swift in Sources */,
 				EA852C2228B50395009330CE /* MainCoordinator.swift in Sources */,
+				EA9BDC6728B6562900509410 /* PhoneStruct.swift in Sources */,
+				EAF2D53228B775900083CC14 /* CarouselViewModel.swift in Sources */,
 				EA9BDC6228B633F100509410 /* HotSellCell.swift in Sources */,
 				EA82406A28B4CF3600CD6E86 /* CategoryCell.swift in Sources */,
 			);

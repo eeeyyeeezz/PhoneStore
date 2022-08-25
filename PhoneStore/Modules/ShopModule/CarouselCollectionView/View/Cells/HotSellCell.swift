@@ -10,8 +10,12 @@ import UIKit
 class HotSellCell: UICollectionViewCell {
   static let identifier: String = "HotSellCell"
 
+  var homeStore: [HomeStore]?
+
+  var cellId: Int?
+
   private let iphoneImage: UIImageView = {
-		let image = UIImageView(image: UIImage(named: "IphoneBackground"))
+		let image = UIImageView()
     image.translatesAutoresizingMaskIntoConstraints = false
     return image
   }()
@@ -34,9 +38,8 @@ class HotSellCell: UICollectionViewCell {
     return label
   }()
 
-  private let iphoneNameLabel: UILabel = {
+  private let phoneNameLabel: UILabel = {
 		let label = UILabel()
-    label.text = "Iphone 12"
     label.textColor = .white
     label.font = label.font.withSize(25)
     label.adjustsFontSizeToFitWidth = true
@@ -44,11 +47,20 @@ class HotSellCell: UICollectionViewCell {
     return label
   }()
 
+  private lazy var stack: UIStackView = {
+		let stack = UIStackView()
+    stack.axis = .vertical
+    stack.addArrangedSubview(newView)
+    stack.addArrangedSubview(phoneNameLabel)
+    stack.distribution = .fillProportionally
+    stack.translatesAutoresizingMaskIntoConstraints = false
+    return stack
+  }()
+
   private let parametrsLabel: UILabel = {
     let label = UILabel()
-    label.text = "Súper. Mega. Rápido."
     label.textColor = .white
-    label.font = label.font.withSize(20)
+    label.font = label.font.withSize(25)
     label.adjustsFontSizeToFitWidth = true
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
@@ -59,7 +71,7 @@ class HotSellCell: UICollectionViewCell {
     button.setTitle("Buy Now!", for: .normal)
     button.setTitleColor(UIColor.black, for: .normal)
     button.backgroundColor = .white
-    button.layer.cornerRadius = 10
+    button.layer.cornerRadius = 5
     button.addTarget(self, action: #selector(buyButtonTapped), for: .touchUpInside)
     button.translatesAutoresizingMaskIntoConstraints = false
     return button
@@ -73,34 +85,61 @@ class HotSellCell: UICollectionViewCell {
 
   override func layoutSubviews() {
     super.layoutSubviews()
+    setupCell()
     addSubviews()
     setupConstraints()
+  }
+
+  private func setupCell() {
+    guard let homeStore = homeStore, let cellId = cellId else {
+      return
+    }
+    newView.isHidden = homeStore[cellId].isNew == nil ? true : false
+    phoneNameLabel.text = homeStore[cellId].title
+    parametrsLabel.text = homeStore[cellId].subtitle
+    setImage(homeStore[cellId].picture, cellId)
+  }
+
+  private func setImage(_ urlString: String, _ cellId: Int) {
+    guard let url = URL(string: urlString) else {
+      return
+    }
+    DispatchQueue.global().async { [weak self] in
+      if let data = try? Data(contentsOf: url) {
+          if let image = UIImage(data: data) {
+              DispatchQueue.main.async {
+                self?.iphoneImage.image = image
+              }
+          }
+      }
+    }
   }
 
   private func addSubviews() {
     addSubviews([
 			iphoneImage,
       newView,
-      newLabel,
-      iphoneNameLabel,
+      phoneNameLabel,
       parametrsLabel,
       buyButton
     ])
+
+    newView.addSubview(newLabel)
   }
 
   @objc
   private func buyButtonTapped() {
-    guard let url = URL(string: "google.com") else {
+    guard let url = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ") else {
       return
     }
-    UIApplication.shared.openURL(url)
+    UIApplication.shared.open(url)
   }
 
   private func setupConstraints() {
     NSLayoutConstraint.activate([
       iphoneImage.topAnchor.constraint(equalTo: topAnchor),
       iphoneImage.bottomAnchor.constraint(equalTo: bottomAnchor),
-      iphoneImage.leadingAnchor.constraint(equalTo: centerXAnchor, constant: -20),
+      iphoneImage.leadingAnchor.constraint(equalTo: leadingAnchor),
       iphoneImage.trailingAnchor.constraint(equalTo: trailingAnchor)
     ])
 
@@ -111,27 +150,37 @@ class HotSellCell: UICollectionViewCell {
       newView.heightAnchor.constraint(equalToConstant: 40)
     ])
 
+    ///
+//    NSLayoutConstraint.activate([
+//      stack.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+//      stack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+//      stack.widthAnchor.constraint(equalToConstant: 40),
+//      stack.heightAnchor.constraint(equalToConstant: 40)
+//
+//    ])
+    ///
+
     NSLayoutConstraint.activate([
       newLabel.centerXAnchor.constraint(equalTo: newView.centerXAnchor),
       newLabel.centerYAnchor.constraint(equalTo: newView.centerYAnchor)
     ])
 
     NSLayoutConstraint.activate([
-      iphoneNameLabel.topAnchor.constraint(equalTo: newView.bottomAnchor, constant: 10),
-      iphoneNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+      phoneNameLabel.topAnchor.constraint(equalTo: newView.bottomAnchor, constant: 10),
+      phoneNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
     ])
 
     NSLayoutConstraint.activate([
-      parametrsLabel.topAnchor.constraint(equalTo: iphoneNameLabel.bottomAnchor, constant: 10),
+      parametrsLabel.topAnchor.constraint(equalTo: phoneNameLabel.bottomAnchor, constant: 10),
       parametrsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
-      parametrsLabel.bottomAnchor.constraint(equalTo: iphoneNameLabel.bottomAnchor, constant: 30)
+      parametrsLabel.bottomAnchor.constraint(equalTo: phoneNameLabel.bottomAnchor, constant: 30)
     ])
 
     NSLayoutConstraint.activate([
-      buyButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
-      buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
-      buyButton.widthAnchor.constraint(equalToConstant: 175),
-      buyButton.heightAnchor.constraint(equalToConstant: 30)
+      buyButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+      buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -34),
+      buyButton.widthAnchor.constraint(equalToConstant: 98),
+      buyButton.heightAnchor.constraint(equalToConstant: 23)
     ])
   }
 

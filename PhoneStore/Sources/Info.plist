@@ -4,7 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Mark-pro.ttf</string>
+		<string>Mark-Pro.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
