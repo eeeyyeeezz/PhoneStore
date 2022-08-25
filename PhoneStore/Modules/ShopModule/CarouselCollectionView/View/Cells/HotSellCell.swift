@@ -33,7 +33,6 @@ class HotSellCell: UICollectionViewCell {
   private lazy var newView: UIView = {
 		let view = UIView()
     view.backgroundColor = .orange
-    debugPrint("corner", (frame.height / 6) / 2, frame.height / 6)
     view.layer.cornerRadius = ((frame.height / 6) / 2)
     view.isHidden = true
     view.translatesAutoresizingMaskIntoConstraints = false

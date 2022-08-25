@@ -44,6 +44,11 @@ class ShopViewController: UIViewController {
         return carouselCollectionView
     }()
 
+    init(_ coordinator: MainCoordinator) {
+      self.coordinator = coordinator
+      super.init(nibName: nil, bundle: nil)
+    }
+
     override func loadView() {
         super.loadView()
         setupStyle()
@@ -52,8 +57,10 @@ class ShopViewController: UIViewController {
     }
 
     private func setupStyle() {
+      	self.tabBarController?.title = "Explorer"
+      	self.tabBarController?.tabBar.tintColor = .white
         view.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9647058824, alpha: 1)
-        title = "Moscow, Ru"
+      	navigationItem.title = "Moscow, Ru"
         let filter = UIBarButtonItem(image: UIImage(named: "Filter")?.withRenderingMode(.alwaysOriginal),
                                      style: .done,
                                      target: self,
@@ -114,5 +121,9 @@ class ShopViewController: UIViewController {
             carouselCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             carouselCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
+    }
+
+    required init?(coder: NSCoder) {
+      fatalError("init(coder:) has not been implemented")
     }
 }

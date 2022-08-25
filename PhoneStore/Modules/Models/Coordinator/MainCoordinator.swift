@@ -15,18 +15,25 @@ class MainCoordinator: Coordinator {
     }
 
     func start() {
-        let vc = MainTabBarViewController()
-        vc.coordinator = self
+        let vc = MainTabBarViewController(self)
         navigationController.pushViewController(vc, animated: false)
     }
 
     func getShopViewController() -> UIViewController {
-        let shop = ShopViewController()
-        shop.coordinator = self
-        shop.tabBarItem = UITabBarItem(title: "",
-                                       image: UIImage(named: "Shop")?.withRenderingMode(.alwaysOriginal),
-                                       selectedImage: UIImage(named: "Shop")?.withRenderingMode(.alwaysOriginal))
+        let shop = ShopViewController(self)
+        shop.tabBarItem = UITabBarItem(title: "Aboba", image: nil, selectedImage: nil)
+//      	shop.tabBarItem = UITabBarItem(title: "Explorer",
+//                                     image: UIImage(named: "Phone")?.withRenderingMode(.alwaysOriginal),
+//                                     selectedImage: UIImage(named: "Phone")?.withRenderingMode(.alwaysOriginal))
         return shop
+    }
+
+    func getProductViewController() -> UIViewController {
+      let product = ProductViewController(self)
+      product.tabBarItem = UITabBarItem(title: "",
+                                     image: UIImage(named: "Shop")?.withRenderingMode(.alwaysOriginal),
+                                     selectedImage: UIImage(named: "Shop")?.withRenderingMode(.alwaysOriginal))
+      return product
     }
 
     func getFilterViewController() -> UIViewController {
