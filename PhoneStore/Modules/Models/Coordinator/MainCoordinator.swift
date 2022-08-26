@@ -21,10 +21,10 @@ class MainCoordinator: Coordinator {
 
     func getShopViewController() -> UIViewController {
         let shop = ShopViewController(self)
-        shop.tabBarItem = UITabBarItem(title: "Aboba", image: nil, selectedImage: nil)
-//      	shop.tabBarItem = UITabBarItem(title: "Explorer",
-//                                     image: UIImage(named: "Phone")?.withRenderingMode(.alwaysOriginal),
-//                                     selectedImage: UIImage(named: "Phone")?.withRenderingMode(.alwaysOriginal))
+//        shop.tabBarItem = UITabBarItem(title: "Aboba", image: nil, selectedImage: nil)
+      	shop.tabBarItem = UITabBarItem(title: "Explorer",
+                                     image: UIImage(named: "Phone")?.withRenderingMode(.alwaysOriginal),
+                                     selectedImage: UIImage(named: "Phone")?.withRenderingMode(.alwaysOriginal))
         return shop
     }
 

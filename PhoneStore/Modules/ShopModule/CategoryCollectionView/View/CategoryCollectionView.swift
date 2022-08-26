@@ -33,7 +33,6 @@ extension CategoryCollectionView: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as! CategoryCell
-        cell.imageCell.tintColor = #colorLiteral(red: 0.7058823529, green: 0.7058823529, blue: 0.768627451, alpha: 1)
         cell.imageCell.image = viewModel.getCellImage(indexPath)
         cell.labelCell.text = viewModel.setupTextCellLabel(indexPath)
         return cell

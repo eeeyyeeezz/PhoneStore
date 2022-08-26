@@ -41,7 +41,7 @@ class PhoneCell: UICollectionViewCell {
     private let discountLabel: UILabel = {
       let label = UILabel()
       let attributedText = NSAttributedString(
-          string: "Label Text",
+          string: "Loading...",
           attributes: [.strikethroughStyle: NSUnderlineStyle.single.rawValue]
       )
       label.attributedText = attributedText
