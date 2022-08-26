@@ -25,3 +25,4 @@ class SearchBar: UISearchBar {
       fatalError("init(coder:) has not been implemented")
   }
 }
+

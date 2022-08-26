@@ -26,14 +26,14 @@ class PhoneCell: UICollectionViewCell {
 
     private let phoneNameLabel: UILabel = {
       let label = UILabel()
-      label.font = label.font.withSize(10)
+      label.font = UIFont(name: "MarkPro", size: 10)
       label.translatesAutoresizingMaskIntoConstraints = false
       return label
     }()
 
     private let priceLabel: UILabel = {
       let label = UILabel()
-      label.font = label.font.withSize(20)
+      label.font = UIFont(name: "MarkPro", size: 16)
       label.translatesAutoresizingMaskIntoConstraints = false
       return label
     }()

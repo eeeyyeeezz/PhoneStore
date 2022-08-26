@@ -30,6 +30,14 @@ class HotSellCell: UICollectionViewCell {
     return image
   }()
 
+  private lazy var blackView: UIView = {
+		let view = UIView()
+    view.layer.cornerRadius = 15
+    view.backgroundColor = .black.withAlphaComponent(0.6)
+    view.frame = bounds
+    return view
+  }()
+
   private lazy var newView: UIView = {
 		let view = UIView()
     view.backgroundColor = .orange
@@ -130,12 +138,12 @@ class HotSellCell: UICollectionViewCell {
     addSubviews([
       progressView,
       phoneImage,
+      blackView,
       newView,
       phoneNameLabel,
       parametrsLabel,
       buyButton
     ])
-
     newView.addSubview(newLabel)
   }
 

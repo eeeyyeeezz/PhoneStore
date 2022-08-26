@@ -32,12 +32,6 @@ class ShopViewController: UIViewController {
         return collectionView
     }()
 
-    private let searchBar: SearchBar = {
-        let search = SearchBar()
-        search.translatesAutoresizingMaskIntoConstraints = false
-        return search
-    }()
-
     private lazy var carouselCollectionView: CarouselCollectionView = {
         let carouselCollectionView = CarouselCollectionView(frame: view.frame)
         carouselCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +77,6 @@ class ShopViewController: UIViewController {
 					viewAllButton,
           categoryLabel,
           collectionView,
-          searchBar,
           carouselCollectionView
         ])
     }
@@ -109,14 +102,7 @@ class ShopViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 15),
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            searchBar.heightAnchor.constraint(equalToConstant: 34),
-        ])
-
-        NSLayoutConstraint.activate([
-            carouselCollectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
+            carouselCollectionView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 15),
             carouselCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             carouselCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             carouselCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
