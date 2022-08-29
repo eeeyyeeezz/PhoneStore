@@ -8,6 +8,7 @@
 
 import UIKit
 
+// TODO: Передаль нормально без повторения кода
 extension UIViewController {
 
   func addSubviews(_ views: [UIView]) {
@@ -17,8 +18,7 @@ extension UIViewController {
   }
 }
 
-extension UICollectionViewCell {
-
+extension UIView {
   func addSubviews(_ views: [UIView]) {
     views.forEach {
       addSubview($0)

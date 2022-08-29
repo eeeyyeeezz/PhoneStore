@@ -59,7 +59,6 @@ final class ProductViewController: UIViewController {
 
   private func setupStyle() {
     view.backgroundColor = #colorLiteral(red: 0.9725490196, green: 0.9725490196, blue: 0.9725490196, alpha: 1)
-//    tabBarController?.tabBar.isHidden = true
     navigationItem.title = "Product Details"
   }
 

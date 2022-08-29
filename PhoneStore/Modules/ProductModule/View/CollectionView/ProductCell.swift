@@ -18,12 +18,14 @@ class ProductCell: UICollectionViewCell {
 
   private let phoneImage: UIImageView = {
     let image = UIImageView()
+    image.contentMode = .scaleAspectFit
     image.translatesAutoresizingMaskIntoConstraints = false
     return image
   }()
 
   private let cartView: CartView = {
 		let view = CartView()
+    view.layer.cornerRadius = 20
     view.translatesAutoresizingMaskIntoConstraints = false
     return view
   }()
