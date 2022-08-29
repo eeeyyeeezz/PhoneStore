@@ -85,6 +85,12 @@ extension CarouselCollectionView: UICollectionViewDataSource,
         }
     }
 
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if indexPath.section != 0 {
+      NotificationCenter.default.post(name: .popProductView, object: nil)
+    }
+  }
+
     func collectionView(_: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 { // HotSales
           let cell = dequeueReusableCell(withReuseIdentifier: HotSellCell.identifier, for: indexPath) as! HotSellCell

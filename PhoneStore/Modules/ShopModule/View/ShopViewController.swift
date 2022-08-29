@@ -38,6 +38,10 @@ class ShopViewController: UIViewController {
         return carouselCollectionView
     }()
 
+    deinit {
+      NotificationCenter.default.removeObserver(self)
+    }
+
     init(_ coordinator: MainCoordinator) {
       self.coordinator = coordinator
       super.init(nibName: nil, bundle: nil)
@@ -60,6 +64,19 @@ class ShopViewController: UIViewController {
                                      target: self,
                                      action: #selector(filterTapped))
         navigationItem.rightBarButtonItems = [filter]
+      	NotificationCenter.default.addObserver(self, selector: #selector(openProductViewController),
+                                                     name: .popProductView,
+                                                     object: nil)
+    }
+
+		@objc
+    private func openProductViewController() {
+      guard let coordinator = coordinator else {
+        return
+      }
+      let viewController =  coordinator.getProductViewController()
+      viewController.modalPresentationStyle = .fullScreen
+      present(viewController, animated: true)
     }
 
     @objc

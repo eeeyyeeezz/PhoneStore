@@ -63,8 +63,8 @@ class MainTabBarViewController: UITabBarController {
             return
         }
         let shopViewController = UINavigationController(rootViewController: coordinator.getShopViewController())
-      	let productViewController = UINavigationController(rootViewController: coordinator.getProductViewController())
-        viewControllers = [shopViewController, productViewController]
+//      	let productViewController = UINavigationController(rootViewController: coordinator.getProductViewController())
+        viewControllers = [shopViewController]
     }
 
     required init?(coder: NSCoder) {

@@ -22,13 +22,14 @@ class ProductCell: UICollectionViewCell {
     return image
   }()
 
+  private let cartView: CartView = {
+		let view = CartView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+
   override init(frame: CGRect) {
     super.init(frame: frame)
-  }
-
-  override func prepareForReuse() {
-    super.prepareForReuse()
-    phoneImage.image = nil
   }
 
   override func layoutSubviews() {
@@ -38,11 +39,16 @@ class ProductCell: UICollectionViewCell {
     setupConstraints()
   }
 
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    phoneImage.image = nil
+  }
+
   private func setupCells() {
     guard let productStruct = productStruct, let _ = cellId else {
       return
     }
-    setImage(productStruct.images[Int.random(in: 0...1)])
+    setImage(productStruct.images[0])
   }
 
   private func setImage(_ urlString: String) {
@@ -62,16 +68,25 @@ class ProductCell: UICollectionViewCell {
 
   private func addSubviews() {
     addSubviews([
-      phoneImage
+      phoneImage,
+      cartView
     ])
+    bringSubviewToFront(cartView)
   }
 
   private func setupConstraints() {
     NSLayoutConstraint.activate([
-      phoneImage.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+      phoneImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: -15),
       phoneImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 75),
       phoneImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -75),
-      phoneImage.heightAnchor.constraint(equalToConstant: bounds.height)
+      phoneImage.heightAnchor.constraint(equalToConstant: bounds.height / 2)
+    ])
+
+    NSLayoutConstraint.activate([
+      cartView.topAnchor.constraint(equalTo: phoneImage.bottomAnchor),
+      cartView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      cartView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      cartView.bottomAnchor.constraint(equalTo: bottomAnchor)
     ])
   }
 

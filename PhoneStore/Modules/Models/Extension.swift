@@ -25,3 +25,7 @@ extension UICollectionViewCell {
     }
   }
 }
+
+extension Notification.Name {
+    static let popProductView = Notification.Name("PopProductView")
+}

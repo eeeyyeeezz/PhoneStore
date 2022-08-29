@@ -18,21 +18,32 @@ final class ProductViewController: UIViewController {
     return collection
   }()
 
-  private let customRightBarButtonItem: UIBarButtonItem = {
-		let view = CustomBarButtonItem(frame: CGRect(x: 0, y: 0, width: 37, height: 37),
-                                   image: UIImageView(image: UIImage(named: "Shop")))
-    view.backgroundColor = #colorLiteral(red: 1, green: 0.431372549, blue: 0.3058823529, alpha: 1)
-    view.layer.cornerRadius = 10
-    return UIBarButtonItem(customView: view)
+  private lazy var customLeftBarButton: UIButton = {
+    let button = CustomButton(frame: CGRect(x: 25,
+                                                 y: 50,
+                                                 width: 37,
+                                                 height: 37),
+                              image: UIImage(named: "BackArrow"))
+    button.backgroundColor = #colorLiteral(red: 0.003921568627, green: 0, blue: 0.2078431373, alpha: 1)
+    button.layer.cornerRadius = 10
+    button.addTarget(self, action: #selector(leftButtonTapped), for: .touchUpInside)
+    return button
   }()
 
-  private let leftRightBarButtonItem: UIBarButtonItem = {
-    let view = CustomBarButtonItem(frame: CGRect(x: 0, y: 0, width: 37, height: 37),
-                                   image: UIImageView(image: UIImage(named: "BackArrow")))
-    view.backgroundColor = #colorLiteral(red: 0.003921568627, green: 0, blue: 0.2078431373, alpha: 1)
-    view.layer.cornerRadius = 10
-    return UIBarButtonItem(customView: view)
+  private lazy var customRightBarButton: UIButton = {
+    let button = CustomButton(frame: CGRect(x: view.bounds.maxX - 50,
+                                            y: 50,
+                                            width: 37, height: 37),
+                                   image: UIImage(named: "Shop"))
+    button.backgroundColor = #colorLiteral(red: 1, green: 0.431372549, blue: 0.3058823529, alpha: 1)
+    button.layer.cornerRadius = 10
+    return button
   }()
+
+	@objc
+  private func leftButtonTapped() {
+    self.dismiss(animated: true)
+  }
 
   init(_ coordinator: MainCoordinator) {
     self.coordinator = coordinator
@@ -47,15 +58,16 @@ final class ProductViewController: UIViewController {
   }
 
   private func setupStyle() {
-    view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    view.backgroundColor = #colorLiteral(red: 0.9725490196, green: 0.9725490196, blue: 0.9725490196, alpha: 1)
+//    tabBarController?.tabBar.isHidden = true
     navigationItem.title = "Product Details"
-    navigationItem.leftBarButtonItem = leftRightBarButtonItem
-    navigationItem.rightBarButtonItem = customRightBarButtonItem
   }
 
   private func addSubviews() {
     addSubviews([
-			collectionView
+      collectionView,
+      customLeftBarButton,
+      customRightBarButton
     ])
   }
 
@@ -64,8 +76,7 @@ final class ProductViewController: UIViewController {
       collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      collectionView.heightAnchor.constraint(equalToConstant: view.bounds.height / 2.5)
-//      collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+      collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
     ])
   }
 

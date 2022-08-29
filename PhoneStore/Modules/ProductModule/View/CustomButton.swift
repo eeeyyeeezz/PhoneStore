@@ -9,15 +9,16 @@
 import UIKit
 
 // BarButton сделанный для вида, для действия кнопок переопределить нажатие на UIImageView (или сделать кнопкой)
-final class CustomBarButtonItem: UIView {
+final class CustomButton: UIButton {
 
-  init(frame: CGRect, image: UIImageView?) {
+  init(frame: CGRect, image: UIImage?) {
     super.init(frame: frame)
     if let image = image {
-      image.center = center
-      addSubview(image)
+//      image.center = center
+      setImage(image, for: .normal)
     }
   }
+
 
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
