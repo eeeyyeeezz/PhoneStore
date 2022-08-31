@@ -40,6 +40,13 @@ final class ProductViewController: UIViewController {
     return button
   }()
 
+  private let cartView: CartView = {
+    let view = CartView()
+    view.layer.cornerRadius = 20
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }()
+
 	@objc
   private func leftButtonTapped() {
     self.dismiss(animated: true)
@@ -65,6 +72,7 @@ final class ProductViewController: UIViewController {
   private func addSubviews() {
     addSubviews([
       collectionView,
+      cartView,
       customLeftBarButton,
       customRightBarButton
     ])
@@ -75,7 +83,14 @@ final class ProductViewController: UIViewController {
       collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+      collectionView.heightAnchor.constraint(equalToConstant: view.bounds.height / 2)
+    ])
+
+    NSLayoutConstraint.activate([
+      cartView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+      cartView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      cartView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      cartView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
     ])
   }
 

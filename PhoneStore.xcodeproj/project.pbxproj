@@ -31,6 +31,7 @@
 		EAD15B7B28B8DEEE0017E901 /* ProductCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD15B7A28B8DEEE0017E901 /* ProductCollectionView.swift */; };
 		EAD15B7D28B8F0690017E901 /* ProductStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD15B7C28B8F0690017E901 /* ProductStruct.swift */; };
 		EAD15B7F28B8F3100017E901 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD15B7E28B8F3100017E901 /* ProductViewModel.swift */; };
+		EAD8657028BE24E600B0D8DD /* CartStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8656F28BE24E600B0D8DD /* CartStruct.swift */; };
 		EAED6E0328B4C59100966548 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED6E0228B4C59100966548 /* AppDelegate.swift */; };
 		EAED6E0528B4C59100966548 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED6E0428B4C59100966548 /* SceneDelegate.swift */; };
 		EAED6E0728B4C59100966548 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAED6E0628B4C59100966548 /* MainTabBarViewController.swift */; };
@@ -64,6 +65,7 @@
 		EAD15B7A28B8DEEE0017E901 /* ProductCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionView.swift; sourceTree = "<group>"; };
 		EAD15B7C28B8F0690017E901 /* ProductStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStruct.swift; sourceTree = "<group>"; };
 		EAD15B7E28B8F3100017E901 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
+		EAD8656F28BE24E600B0D8DD /* CartStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartStruct.swift; sourceTree = "<group>"; };
 		EAED6DFF28B4C59100966548 /* PhoneStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAED6E0228B4C59100966548 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAED6E0428B4C59100966548 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 			children = (
 				EA852C1F28B501C8009330CE /* Coordinator */,
 				EA9BDC5F28B6316500509410 /* Extension.swift */,
+				EAD8656F28BE24E600B0D8DD /* CartStruct.swift */,
 				EA9BDC6628B6562900509410 /* PhoneStruct.swift */,
 				EAD15B7C28B8F0690017E901 /* ProductStruct.swift */,
 			);
@@ -376,6 +379,7 @@
 				EAB062C728B7A4C50071BE48 /* ProductViewController.swift in Sources */,
 				EA82406D28B4D6B900CD6E86 /* CategoryCollectionViewModel.swift in Sources */,
 				EA9BDC6528B653DF00509410 /* PhoneCell.swift in Sources */,
+				EAD8657028BE24E600B0D8DD /* CartStruct.swift in Sources */,
 				EA82406528B4CDCC00CD6E86 /* ShopViewController.swift in Sources */,
 				EA852C2D28B51A8F009330CE /* Layout.swift in Sources */,
 				EA852C2528B509C2009330CE /* FilterViewController.swift in Sources */,

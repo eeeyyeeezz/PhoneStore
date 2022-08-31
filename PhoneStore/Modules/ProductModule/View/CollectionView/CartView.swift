@@ -8,13 +8,32 @@
 
 import UIKit
 
+private struct CartViewModel {
+  func parsData(_ completion: @escaping ((CartStruct) -> Void)) {
+    if let url = URL(string: "https://run.mocky.io/v3/6c14c560-15c6-4248-b9d2-b4508df7d4f5") {
+      URLSession.shared.dataTask(with: url) { data, _, error in
+        if let data = data {
+          do {
+              let result = try JSONDecoder().decode(CartStruct.self, from: data)
+              completion(result)
+          } catch {
+              debugPrint(error)
+          }
+        }
+      }.resume()
+    }
+  }
+}
+
 final class CartView: UIView {
 
   private let addToCartButton: UIButton = {
-		let button = UIButton()
+    let button = UIButton(type: .system)
     button.backgroundColor = #colorLiteral(red: 0.9960784314, green: 0.431372549, blue: 0.3058823529, alpha: 1)
     button.layer.cornerRadius = 15
-//    button.setTitle("Add To Cart", for: .normal)
+    button.setTitle("Add To Cart", for: .normal)
+    button.setTitleColor(.white, for: .normal)
+    button.titleLabel?.font = UIFont(name: "MarkPro", size: 20)
     button.translatesAutoresizingMaskIntoConstraints = false
     return button
   }()

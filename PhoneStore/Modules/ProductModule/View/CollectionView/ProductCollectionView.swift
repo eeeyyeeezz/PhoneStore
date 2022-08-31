@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductCollectionView: UICollectionView {
+final class ProductCollectionView: UICollectionView {
 
   private var productStruct: ProductStruct?
 
