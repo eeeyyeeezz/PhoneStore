@@ -10,6 +10,8 @@ import UIKit
 class ShopViewController: UIViewController {
     weak var coordinator: MainCoordinator?
 
+  	private let transition: PanelTransition
+
     private let categoryLabel: UILabel = {
         let label = UILabel()
         label.text = "Select Category"
@@ -44,6 +46,7 @@ class ShopViewController: UIViewController {
 
     init(_ coordinator: MainCoordinator) {
       self.coordinator = coordinator
+      self.transition = PanelTransition()
       super.init(nibName: nil, bundle: nil)
     }
 
@@ -84,8 +87,9 @@ class ShopViewController: UIViewController {
         guard let coordinator = coordinator else {
             return
         }
-        let filter = UINavigationController(rootViewController: coordinator.getFilterViewController())
-        filter.modalPresentationStyle = .pageSheet
+        let filter = coordinator.getFilterViewController()
+      	filter.transitioningDelegate = transition
+        filter.modalPresentationStyle = .custom
         present(filter, animated: true)
     }
 

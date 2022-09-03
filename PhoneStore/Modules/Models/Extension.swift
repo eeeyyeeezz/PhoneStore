@@ -8,7 +8,7 @@
 
 import UIKit
 
-// TODO: Передаль нормально без повторения кода
+// TODO: Передать нормально без повторения кода
 extension UIViewController {
 
   func addSubviews(_ views: [UIView]) {
