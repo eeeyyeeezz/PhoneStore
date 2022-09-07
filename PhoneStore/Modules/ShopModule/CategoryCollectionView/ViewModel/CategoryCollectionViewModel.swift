@@ -43,24 +43,24 @@ struct CategoryCollectionViewModel {
             let customIndexPath = IndexPath(item: i, section: 0)
             let cell = collectionView.cellForItem(at: customIndexPath) as! CategoryCell
             if cell.view.backgroundColor == .orange, indexPath != customIndexPath {
-              cell.imageCell.tintColor = #colorLiteral(red: 0.7058823529, green: 0.7058823529, blue: 0.768627451, alpha: 1)
-              cell.view.backgroundColor = .white
+                cell.imageCell.tintColor = #colorLiteral(red: 0.7058823529, green: 0.7058823529, blue: 0.768627451, alpha: 1)
+                cell.view.backgroundColor = .white
             }
         }
     }
 
-  func setupCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) {
-    checkSelectedCells(collectionView, indexPath)
+    func setupCell(_ collectionView: UICollectionView, _ indexPath: IndexPath) {
+        checkSelectedCells(collectionView, indexPath)
 
-    let cell = collectionView.cellForItem(at: indexPath) as! CategoryCell
-    if cell.isSelected {
-        if cell.view.backgroundColor == .white {
-          	cell.imageCell.tintColor = .white
-            cell.view.backgroundColor = .orange
-        } else {
-          	cell.imageCell.tintColor = #colorLiteral(red: 0.7058823529, green: 0.7058823529, blue: 0.768627451, alpha: 1)
-            cell.view.backgroundColor = .white
+        let cell = collectionView.cellForItem(at: indexPath) as! CategoryCell
+        if cell.isSelected {
+            if cell.view.backgroundColor == .white {
+                cell.imageCell.tintColor = .white
+                cell.view.backgroundColor = .orange
+            } else {
+                cell.imageCell.tintColor = #colorLiteral(red: 0.7058823529, green: 0.7058823529, blue: 0.768627451, alpha: 1)
+                cell.view.backgroundColor = .white
+            }
         }
     }
-  }
 }

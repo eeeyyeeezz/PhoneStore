@@ -20,7 +20,7 @@ class CategoryCell: UICollectionViewCell {
 
     var imageCell: UIImageView = {
         let image = UIImageView()
-      	image.tintColor = #colorLiteral(red: 0.7058823529, green: 0.7058823529, blue: 0.768627451, alpha: 1)
+        image.tintColor = #colorLiteral(red: 0.7058823529, green: 0.7058823529, blue: 0.768627451, alpha: 1)
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()

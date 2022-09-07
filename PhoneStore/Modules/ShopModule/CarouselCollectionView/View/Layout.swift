@@ -22,16 +22,17 @@ extension CarouselCollectionView {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1),
                                                             heightDimension: .fractionalHeight(1)))
         item.contentInsets.trailing = 5
-      	let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                                                       heightDimension: .fractionalHeight(0.4)),
-            																						subitems: [item])
-      	let header = NSCollectionLayoutBoundarySupplementaryItem(
-                      layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                         heightDimension: .absolute(50.0)),
-                      elementKind: HeaderHotSales.categoryId,
-                      alignment: .top)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1),
+                                                                         heightDimension: .fractionalHeight(0.4)),
+                                                       subitems: [item])
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .absolute(50.0)),
+            elementKind: HeaderHotSales.categoryId,
+            alignment: .top
+        )
         group.contentInsets.leading = 10
-      	group.contentInsets.trailing = 10
+        group.contentInsets.trailing = 10
         let section = NSCollectionLayoutSection(group: group)
         section.boundarySupplementaryItems = [header]
         section.orthogonalScrollingBehavior = .paging
@@ -39,22 +40,23 @@ extension CarouselCollectionView {
     }
 
     private static func createBasicLayout(sectionNumber _: Int) -> NSCollectionLayoutSection? {
-     		let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.45),
-                                                           heightDimension: .fractionalHeight(1)))
-      	item.contentInsets.trailing = 8
-      	let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1),
+        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.45),
+                                                            heightDimension: .fractionalHeight(1)))
+        item.contentInsets.trailing = 8
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1),
                                                                          heightDimension: .fractionalHeight(0.45)),
-                                                     subitem: item, count: 2)
-      	group.contentInsets.top = 16
-      	group.contentInsets.leading = 8
-      	group.contentInsets.trailing = 8
-      	let header = NSCollectionLayoutBoundarySupplementaryItem(
-                    layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                       heightDimension: .absolute(50.0)),
-                    elementKind: HeaderPhone.categoryId,
-                    alignment: .top)
+                                                       subitem: item, count: 2)
+        group.contentInsets.top = 16
+        group.contentInsets.leading = 8
+        group.contentInsets.trailing = 8
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .absolute(50.0)),
+            elementKind: HeaderPhone.categoryId,
+            alignment: .top
+        )
         let section = NSCollectionLayoutSection(group: group)
-      	section.boundarySupplementaryItems = [header]
+        section.boundarySupplementaryItems = [header]
         return section
     }
 }

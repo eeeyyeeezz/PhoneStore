@@ -1,6 +1,5 @@
 # PhoneStore
 ### Приложение магазин смартфонов, данные берутся с mock API
-### In progress
 
 #### Основной стек: __UIKit, CollectionLayout__
 #### Полность натив (Без cocoapods/carthage/package manager)

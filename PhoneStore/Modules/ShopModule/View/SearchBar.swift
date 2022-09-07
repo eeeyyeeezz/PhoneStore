@@ -8,21 +8,19 @@
 import UIKit
 
 class SearchBar: UISearchBar {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        barStyle = .default
+        backgroundColor = nil
+        tintColor = .blue
+    }
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    barStyle = .default
-    backgroundColor = nil
-    tintColor = .blue
-  }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
 
-  override func layoutSubviews() {
-    super.layoutSubviews()
-  }
-
-  @available(*, unavailable)
-  required init?(coder _: NSCoder) {
-      fatalError("init(coder:) has not been implemented")
-  }
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
-

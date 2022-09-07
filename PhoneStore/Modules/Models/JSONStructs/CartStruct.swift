@@ -1,14 +1,14 @@
-// 
+//
 // PhoneStore
 // CartStruct.swift
 // Created by eeeyyeeezz on 30.08.2022
 // Swift: 5.0
 //
 
-
 import Foundation
 
 // MARK: - CartStruct
+
 struct CartStruct: Codable {
     let cpu, camera: String
     let capacity, color: [String]

@@ -1,4 +1,4 @@
-// 
+//
 // PhoneStore
 // ProductStruct.swift
 // Created by eeeyyeeezz on 26.08.2022
@@ -8,6 +8,7 @@
 import Foundation
 
 // MARK: - ProductStruct
+
 struct ProductStruct: Codable {
     let cpu, camera: String
     let capacity, color: [String]
@@ -23,4 +24,3 @@ struct ProductStruct: Codable {
         case camera, capacity, color, id, images, isFavorites, price, rating, sd, ssd, title
     }
 }
-

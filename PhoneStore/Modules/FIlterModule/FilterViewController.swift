@@ -8,34 +8,29 @@
 import UIKit
 
 class FilterViewController: UIViewController {
-    private lazy var dismissButton: UIButton = {
-			let button = UIButton(frame: CGRect(x: 20, y: 20, width: 25, height: 25))
-      button.layer.cornerRadius = 7.5
-      button.backgroundColor = #colorLiteral(red: 0.003921568627, green: 0, blue: 0.2078431373, alpha: 1)
-      button.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
-      return button
+
+    private lazy var dismissButton: UIBarButtonItem = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+        button.layer.cornerRadius = 10
+        button.backgroundColor = #colorLiteral(red: 0.003921568627, green: 0, blue: 0.2078431373, alpha: 1)
+        button.addTarget(self, action: #selector(dismissController), for: .touchUpInside)
+        return UIBarButtonItem(customView: button)
     }()
 
     override func loadView() {
         super.loadView()
         setupStyle()
-      	addSubviews()
     }
 
-  	@objc
+    @objc
     private func dismissController() {
-      self.dismiss(animated: true)
+        dismiss(animated: true)
     }
 
     private func setupStyle() {
-      view.layer.cornerRadius = 10
-      title = "Filter options"
-      view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    }
-
-    private func addSubviews() {
-      addSubviews([
-				dismissButton
-      ])
+        view.layer.cornerRadius = 20
+        title = "Filter options"
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        navigationItem.leftBarButtonItem = dismissButton
     }
 }

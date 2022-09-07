@@ -10,7 +10,7 @@ import UIKit
 class ShopViewController: UIViewController {
     weak var coordinator: MainCoordinator?
 
-  	private let transition: PanelTransition
+    private let transition: PanelTransition
 
     private let categoryLabel: UILabel = {
         let label = UILabel()
@@ -41,13 +41,13 @@ class ShopViewController: UIViewController {
     }()
 
     deinit {
-      NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
     init(_ coordinator: MainCoordinator) {
-      self.coordinator = coordinator
-      self.transition = PanelTransition()
-      super.init(nibName: nil, bundle: nil)
+        self.coordinator = coordinator
+        transition = PanelTransition()
+        super.init(nibName: nil, bundle: nil)
     }
 
     override func loadView() {
@@ -58,28 +58,28 @@ class ShopViewController: UIViewController {
     }
 
     private func setupStyle() {
-      	self.tabBarController?.title = "Explorer"
-      	self.tabBarController?.tabBar.tintColor = .white
+        tabBarController?.title = "Explorer"
+        tabBarController?.tabBar.tintColor = .white
         view.backgroundColor = #colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9647058824, alpha: 1)
-      	navigationItem.title = "Moscow, Ru"
+        navigationItem.title = "Moscow, Ru"
         let filter = UIBarButtonItem(image: UIImage(named: "Filter")?.withRenderingMode(.alwaysOriginal),
                                      style: .done,
                                      target: self,
                                      action: #selector(filterTapped))
         navigationItem.rightBarButtonItems = [filter]
-      	NotificationCenter.default.addObserver(self, selector: #selector(openProductViewController),
-                                                     name: .popProductView,
-                                                     object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(openProductViewController),
+                                               name: .popProductView,
+                                               object: nil)
     }
 
-		@objc
+    @objc
     private func openProductViewController() {
-      guard let coordinator = coordinator else {
-        return
-      }
-      let viewController =  coordinator.getProductViewController()
-      viewController.modalPresentationStyle = .fullScreen
-      present(viewController, animated: true)
+        guard let coordinator = coordinator else {
+            return
+        }
+        let viewController = coordinator.getProductViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true)
     }
 
     @objc
@@ -87,18 +87,18 @@ class ShopViewController: UIViewController {
         guard let coordinator = coordinator else {
             return
         }
-        let filter = coordinator.getFilterViewController()
-      	filter.transitioningDelegate = transition
+        let filter = UINavigationController(rootViewController: coordinator.getFilterViewController())
+        filter.transitioningDelegate = transition
         filter.modalPresentationStyle = .custom
         present(filter, animated: true)
     }
 
     private func addSubviews() {
-      	addSubviews([
-					viewAllButton,
-          categoryLabel,
-          collectionView,
-          carouselCollectionView
+        addSubviews([
+            viewAllButton,
+            categoryLabel,
+            collectionView,
+            carouselCollectionView,
         ])
     }
 
@@ -112,7 +112,7 @@ class ShopViewController: UIViewController {
         NSLayoutConstraint.activate([
             categoryLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             categoryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 17),
-            categoryLabel.trailingAnchor.constraint(equalTo: viewAllButton.leadingAnchor)
+            categoryLabel.trailingAnchor.constraint(equalTo: viewAllButton.leadingAnchor),
         ])
 
         NSLayoutConstraint.activate([
@@ -130,7 +130,8 @@ class ShopViewController: UIViewController {
         ])
     }
 
-    required init?(coder: NSCoder) {
-      fatalError("init(coder:) has not been implemented")
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
